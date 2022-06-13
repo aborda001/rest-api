@@ -20,20 +20,22 @@ const createUser = async (req, res, next) => {
 const updateUser = async (req, res, next) => {
   try {
     const { id } = req;
-    const user = await User.findById(id);
+    const data = req.body;
 
-    if (!user)
+    const updatedUser = await User.findByIdAndUpdate(id, data, {
+      new: true,
+    });
+
+    if (!updatedUser)
       return res.status(404).json({
         error: 'Not found',
         message: 'User not found',
       });
 
-    const data = req.body;
-    await user.updateOne(data);
     res.status(200).json({
       message: 'User updated successfully',
       user: {
-        id: user._id,
+        id,
         username: data.username,
       },
     });
@@ -45,19 +47,18 @@ const updateUser = async (req, res, next) => {
 const deleteUser = async (req, res, next) => {
   try {
     const { id } = req;
-    const user = await User.findById(id);
+    const deletedUser = await User.findByIdAndDelete(id);
 
-    if (!user)
+    if (!deletedUser)
       return res.status(404).json({
         error: 'Not found',
         message: 'User not found',
       });
 
-    await user.remove();
     res.status(200).json({
       message: 'User deleted successfully',
       user: {
-        id: user._id,
+        id,
       },
     });
   } catch (error) {
