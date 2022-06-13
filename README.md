@@ -12,8 +12,6 @@ Testing
 - `npm run test` to run the tests
 - `npm run test:watch` to run the tests in watch mode
 
-# Code Overview
-
 ## Dependencies
 
 - [expressjs](https://github.com/expressjs/express) - The server for handling and routing HTTP requests
