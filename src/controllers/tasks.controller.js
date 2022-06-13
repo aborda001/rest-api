@@ -24,10 +24,14 @@ const createTask = async (req, res, next) => {
 const getTasks = async (req, res, next) => {
   try {
     const user_id = req.id;
-
-    const tasks = await Task.find({ user_id });
+    const { limit, page } = req.query;
+    const tasks = await Task.find({ user_id })
+      .skip(limit * page - limit)
+      .limit(limit)
+      .select('name description done');
 
     res.status(200).json({
+      rows: tasks.length,
       message: 'Tasks fetched successfully',
       tasks,
     });

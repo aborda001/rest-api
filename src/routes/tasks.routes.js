@@ -29,6 +29,18 @@ const router = Router();
  *    summary: Endpoint para obtener todas las tareas de un usuario
  *    tags: [Tasks]
  *    parameters:
+ *      - in: query
+ *        name: limit
+ *        schema:
+ *          type: integer
+ *        required: false
+ *        description: Número de tareas a mostrar por página, si no se especifica se mostrarán todas
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: integer
+ *        required: false
+ *        description: Número de página, por defecto es la primera
  *      - in: header
  *        name: x-access-token
  *        schema:
@@ -42,8 +54,9 @@ const router = Router();
  *          application/json:
  *            schema:
  *              example:
- *                count: 2
- *                items:
+ *                rows: 2
+ *                message: Tasks fetched successfully
+ *                tasks:
  *                  - _id: 5e9f8f8f8f8f8f8f8f8f8f8
  *                    name: Work task
  *                    description: Task to do work
