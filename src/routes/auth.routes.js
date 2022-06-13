@@ -8,6 +8,13 @@ const router = Router();
 
 /**
  * @swagger
+ * tags:
+ *  name: Auth
+ *  description: Endpoints para autenticación
+ */
+
+/**
+ * @swagger
  * /auth:
  *  post:
  *    summary: Endpoint para autenticar un usuario
