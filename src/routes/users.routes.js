@@ -17,53 +17,9 @@ const router = Router();
 
 /**
  * @swagger
- * components:
- *  schemas:
- *    Users:
- *      type: object
- *      properties:
- *        username:
- *          type: string
- *          description: El nombre de usuario, debe ser único
- *        password:
- *          type: string
- *          description: La contraseña del usuario, debe contener al menos 8 caracteres
- *      required:
- *        - username
- *        - password
- *      example:
- *        username: username001
- *        password: password001'
- *    ServerError:
- *      description: Error del servidor
- *      content:
- *        application/json:
- *          schema:
- *            example:
- *              error: 'Nombre del error'
- *              stack: 'Detalle del error'
- *    NotFoundError:
- *      description: Usuario no encontrado
- *      content:
- *        application/json:
- *          schema:
- *            example:
- *              error: 'Not found'
- *              message: 'User not found'
- */
-
-/**
- * @swagger
- * tags:
- *  name: Users
- *  description: Endpoints para la gestión de usuarios
- */
-
-/**
- * @swagger
  * /users:
  *  post:
- *    summary: Endpoint creado para crear un nuevo usuario
+ *    summary: Endpoint para crear un nuevo usuario
  *    tags: [Users]
  *    requestBody:
  *      required: true
@@ -82,6 +38,12 @@ const router = Router();
  *                - user:
  *                    username: username001
  *
+ *      400:
+ *        $ref: '#/components/schemas/ValidationError'
+ *
+ *      409:
+ *        $ref: '#/components/schemas/ConflictError'
+ *
  *      500:
  *        $ref: '#/components/schemas/ServerError'
  *
@@ -97,7 +59,7 @@ router.post(
  * @swagger
  * /users/{id}:
  *  patch:
- *    summary: Endpoint creado para actualizar un usuario por id
+ *    summary: Endpoint para actualizar un usuario por id
  *    tags: [Users]
  *    parameters:
  *      - in: path
@@ -129,12 +91,21 @@ router.post(
  *                - user:
  *                    id: 62a594e5ce53d40c0432b5ad
  *                    username: username001
+ *      400:
+ *        $ref: '#/components/schemas/ValidationError'
+ *
+ *      401:
+ *        $ref: '#/components/schemas/UnauthorizedError'
+ *
+ *      403:
+ *        $ref: '#/components/schemas/ForbiddenError'
  *
  *      404:
  *        $ref: '#/components/schemas/NotFoundError'
  *
  *      500:
  *        $ref: '#/components/schemas/ServerError'
+ *
  */
 router.patch(
   '/:id',
@@ -148,7 +119,7 @@ router.patch(
  * @swagger
  * /users/{id}:
  *  delete:
- *    summary: Endpoint creado para eliminar un usuario por id
+ *    summary: Endpoint para eliminar un usuario por id
  *    tags: [Users]
  *    parameters:
  *      - in: path
@@ -173,6 +144,15 @@ router.patch(
  *                - message: User deleted successfully
  *                - user:
  *                    id: 62a594e5ce53d40c0432b5ad
+ *
+ *      400:
+ *        $ref: '#/components/schemas/ValidationError'
+ *
+ *      401:
+ *        $ref: '#/components/schemas/UnauthorizedError'
+ *
+ *      403:
+ *        $ref: '#/components/schemas/ForbiddenError'
  *
  *      404:
  *        $ref: '#/components/schemas/NotFoundError'
