@@ -18,7 +18,23 @@ const express = require('express');
  *        - password
  *      example:
  *        username: username001
- *        password: password001'
+ *        password: password001
+ *    Tasks:
+ *      type: object
+ *      properties:
+ *        name:
+ *          type: string
+ *          description: El nombre de la tarea, debe tener una longitud mínima de 2 caracteres y una longitud máxima de 30 caracteres
+ *        description:
+ *          type: string
+ *          description: La descripción de la tarea, debe tener una longitud mínima de 5 caracteres y una longitud máxima de 100 caracteres
+ *      required:
+ *        - name
+ *        - description
+ *      example:
+ *        name: Work something
+ *        description: Working on something in the office
+ *        done: false
  *    ServerError:
  *      description: Error del servidor
  *      content:
@@ -59,24 +75,24 @@ const express = require('express');
  *            example:
  *              error: 'Conflict'
  *              message: 'Username already exists'
- *    ValidationError:
- *      description: Error de validación
+ *    BadRequestError:
+ *      description: Error de solicitud
  *      content:
  *        application/json:
  *          schema:
  *            example:
- *              error: 'Validation failed'
+ *              error: 'Bad request'
  *              message: '"username" length must be at least 5 characters long'
  *
- */
-
-/**
- * @swagger
- * tags:
- *  name: Auth
- *  description: Endpoints para la autenticación
- *  name: Users
- *  description: Endpoints para la gestión de usuarios
+ *    BadRequestTaskError:
+ *      description: Error de solicitud
+ *      content:
+ *        application/json:
+ *          schema:
+ *            example:
+ *              error: 'Bad request'
+ *              message: '"name" length must be at least 2 characters long'
+ *
  */
 
 function routerApi(app) {
@@ -84,6 +100,7 @@ function routerApi(app) {
   app.use('/api/v1', router);
   router.use('/users', require('./users.routes'));
   router.use('/auth', require('./auth.routes'));
+  router.use('/tasks', require('./tasks.routes'));
 }
 
 module.exports = routerApi;
