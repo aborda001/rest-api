@@ -109,7 +109,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"test0001\",\r\n    \"password\" : \"testing0001\"\r\n}"
+							"raw": "{\r\n    \"username\" : \"aborda\",\r\n    \"password\" : \"contrasenasegura\"\r\n}"
 						},
 						"url": {
 							"raw": "{{URL}}/auth",
@@ -135,7 +135,7 @@
 						"header": [
 							{
 								"key": "x-access-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTZkNWQwNWRiZTQ1NDY1YTc5MGYzNSIsImlhdCI6MTY1NTEwMDg4NywiZXhwIjoxNjU1MTg3Mjg3fQ.2S4jaZfUDVCPcCcrPVR2Zkv3KvGRThdbbPnBjenvzJI",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTc1NDQ0MWQ5Y2QyMDNlMWY1ZDBmOSIsImlhdCI6MTY1NTEzMzUzOCwiZXhwIjoxNjU1MjE5OTM4fQ.N4LCEI-Tr6g-GBC-SKPvHQG8nBEkK4nfa8atI90Yz6o",
 								"type": "text"
 							},
 							{
@@ -146,7 +146,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Work 10\",\r\n    \"description\": \"Working something in the office\"\r\n}"
+							"raw": "{\r\n    \"name\": \"Work 14\",\r\n    \"description\": \"Working something in the office\"\r\n}"
 						},
 						"url": {
 							"raw": "{{URL}}/tasks",
@@ -167,12 +167,12 @@
 						"header": [
 							{
 								"key": "x-access-token",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTZkNWQwNWRiZTQ1NDY1YTc5MGYzNSIsImlhdCI6MTY1NTEwMDg4NywiZXhwIjoxNjU1MTg3Mjg3fQ.2S4jaZfUDVCPcCcrPVR2Zkv3KvGRThdbbPnBjenvzJI",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTc1NDQ0MWQ5Y2QyMDNlMWY1ZDBmOSIsImlhdCI6MTY1NTEzMzUzOCwiZXhwIjoxNjU1MjE5OTM4fQ.N4LCEI-Tr6g-GBC-SKPvHQG8nBEkK4nfa8atI90Yz6o",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{URL}}/tasks",
+							"raw": "{{URL}}/tasks?limit=2",
 							"host": [
 								"{{URL}}"
 							],
@@ -182,8 +182,7 @@
 							"query": [
 								{
 									"key": "limit",
-									"value": "2",
-									"disabled": true
+									"value": "2"
 								},
 								{
 									"key": "page",
