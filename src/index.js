@@ -4,6 +4,8 @@ require('./database');
 
 const PORT = config.PORT;
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+module.exports = server;

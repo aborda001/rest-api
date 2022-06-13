@@ -46,8 +46,6 @@ const router = Router();
  *
  *      400:
  *        $ref: '#/components/schemas/BadRequestError'
- *      401:
- *        $ref: '#/components/schemas/UnauthorizedError'
  *      409:
  *        $ref: '#/components/schemas/ConflictError'
  *      500:
