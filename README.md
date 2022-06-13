@@ -1,5 +1,9 @@
 # Getting started
 
+Node version: 16.2.0
+
+Npm Version: 7.13.0
+
 To get the Node server running locally:
 
 - Clone this repo
