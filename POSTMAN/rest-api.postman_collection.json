@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "8f7f8539-d118-460d-8f1c-cfab22b24394",
+		"name": "rest-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12556884"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"aborda\",\r\n    \"password\" : \"contrasenasegura\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTVhMDkxYzZiMjM5NmEyMzE1NTQ4MyIsImlhdCI6MTY1NTAyMTcxOCwiZXhwIjoxNjU1MTA4MTE4fQ.Fhzi5QtEahEse1_e3-urO_E621t3vpNKQRyG-F6CzPw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"aborda002\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTVhMDkxYzZiMjM5NmEyMzE1NTQ4MyIsImlhdCI6MTY1NTAyMTcxOCwiZXhwIjoxNjU1MTA4MTE4fQ.Fhzi5QtEahEse1_e3-urO_E621t3vpNKQRyG-F6CzPw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/users",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"test0001\",\r\n    \"password\" : \"testing0001\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/auth",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Create task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTZkNWQwNWRiZTQ1NDY1YTc5MGYzNSIsImlhdCI6MTY1NTEwMDg4NywiZXhwIjoxNjU1MTg3Mjg3fQ.2S4jaZfUDVCPcCcrPVR2Zkv3KvGRThdbbPnBjenvzJI",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Work 10\",\r\n    \"description\": \"Working something in the office\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/tasks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get tasks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTZkNWQwNWRiZTQ1NDY1YTc5MGYzNSIsImlhdCI6MTY1NTEwMDg4NywiZXhwIjoxNjU1MTg3Mjg3fQ.2S4jaZfUDVCPcCcrPVR2Zkv3KvGRThdbbPnBjenvzJI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/tasks",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update task",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTVhMDkxYzZiMjM5NmEyMzE1NTQ4MyIsImlhdCI6MTY1NTA5NTAzNSwiZXhwIjoxNjU1MTgxNDM1fQ.R_7kxlcR4u1RWVpOVhfiaNtm2gDwaGB6rp7H0E0VfB4",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Task updated 2\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/tasks/62a6c444bffce15e2f692ee4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks",
+								"62a6c444bffce15e2f692ee4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update task Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTVhMDkxYzZiMjM5NmEyMzE1NTQ4MyIsImlhdCI6MTY1NTA5NTAzNSwiZXhwIjoxNjU1MTgxNDM1fQ.R_7kxlcR4u1RWVpOVhfiaNtm2gDwaGB6rp7H0E0VfB4",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Task updated  by other user\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/tasks/62a6c444bffce15e2f692ee4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tasks",
+								"62a6c444bffce15e2f692ee4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
