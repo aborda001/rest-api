@@ -1,6 +1,5 @@
 const Joi = require('joi');
 
-const id = Joi.string().length(24);
 const username = Joi.string().min(5).max(20);
 const password = Joi.string().min(8);
 
@@ -14,12 +13,7 @@ const updateUserSchema = Joi.object({
   password: password,
 });
 
-deleteUserSchema = Joi.object({
-  id: id.required(),
-});
-
 module.exports = {
   createUserSchema,
   updateUserSchema,
-  deleteUserSchema,
 };

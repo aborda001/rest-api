@@ -3,7 +3,6 @@ const validatorHandler = require('../middlewares/validator.handler');
 const {
   createUserSchema,
   updateUserSchema,
-  deleteUserSchema,
 } = require('../schemas/user.schema');
 const {
   createUser,
@@ -14,6 +13,12 @@ const { verifyToken } = require('../middlewares/auth.handler');
 const { checkDuplicated } = require('../middlewares/signup.handler');
 
 const router = Router();
+/**
+ * @swagger
+ * tags:
+ *  name: Users
+ *  description: Endpoints para la gestión de usuarios
+ */
 
 /**
  * @swagger
@@ -36,6 +41,7 @@ const router = Router();
  *              example:
  *                - message: User created successfully
  *                - user:
+ *                    id: 5e9f8f8f8f8f8f8f8f8f8f8
  *                    username: username001
  *
  *      400:
@@ -57,17 +63,11 @@ router.post(
 
 /**
  * @swagger
- * /users/{id}:
+ * /users:
  *  patch:
- *    summary: Endpoint para actualizar un usuario por id
+ *    summary: Endpoint para actualizar un usuario
  *    tags: [Users]
  *    parameters:
- *      - in: path
- *        name: id
- *        schema:
- *          type: string
- *        required: true
- *        description: ObjectId del usuario a editar
  *      - in: header
  *        name: x-access-token
  *        schema:
@@ -92,7 +92,7 @@ router.post(
  *                    id: 62a594e5ce53d40c0432b5ad
  *                    username: username001
  *      400:
- *        $ref: '#/components/schemas/ValidationError'
+ *        $ref: '#/components/schemas/BadRequestError'
  *
  *      401:
  *        $ref: '#/components/schemas/UnauthorizedError'
@@ -108,26 +108,19 @@ router.post(
  *
  */
 router.patch(
-  '/:id',
+  '/',
   verifyToken,
-  validatorHandler(deleteUserSchema, 'params'),
   validatorHandler(updateUserSchema, 'body'),
   updateUser
 );
 
 /**
  * @swagger
- * /users/{id}:
+ * /users:
  *  delete:
- *    summary: Endpoint para eliminar un usuario por id
+ *    summary: Endpoint para eliminar un usuario
  *    tags: [Users]
  *    parameters:
- *      - in: path
- *        name: id
- *        schema:
- *          type: string
- *        required: true
- *        description: ObjectId del usuario a eliminar
  *      - in: header
  *        name: x-access-token
  *        schema:
@@ -160,11 +153,6 @@ router.patch(
  *      500:
  *        $ref: '#/components/schemas/ServerError'
  */
-router.delete(
-  '/:id',
-  verifyToken,
-  validatorHandler(deleteUserSchema, 'params'),
-  deleteUser
-);
+router.delete('/', verifyToken, deleteUser);
 
 module.exports = router;

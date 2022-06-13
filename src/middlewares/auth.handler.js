@@ -13,19 +13,18 @@ const verifyToken = async (req, res, next) => {
   try {
     const decoded = await jwt.verify(token, config.JWT_SECRET);
     const user = await User.findById(decoded.id);
+    req.id = decoded.id;
     if (!user)
       return res.status(401).json({
         message: 'Token invalid or expired.',
         token: null,
       });
-
-    if (decoded.id != req.params.id)
-      return res.status(403).json({
-        message: 'Permission denied.',
-      });
     next();
   } catch (err) {
-    next(err);
+    return res.status(401).json({
+      message: 'Token invalid or expired.',
+      token: null,
+    });
   }
 };
 

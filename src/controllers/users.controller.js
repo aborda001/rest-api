@@ -9,6 +9,7 @@ const createUser = async (req, res, next) => {
     res.status(201).json({
       message: 'User created successfully',
       user: {
+        id: newUser._id,
         username: newUser.username,
       },
     });
@@ -18,7 +19,7 @@ const createUser = async (req, res, next) => {
 };
 const updateUser = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { id } = req;
     const user = await User.findById(id);
 
     if (!user)
@@ -28,12 +29,12 @@ const updateUser = async (req, res, next) => {
       });
 
     const data = req.body;
-    await user.update(data);
+    await user.updateOne(data);
     res.status(200).json({
       message: 'User updated successfully',
       user: {
         id: user._id,
-        username: user.username,
+        username: data.username,
       },
     });
   } catch (error) {
@@ -43,7 +44,7 @@ const updateUser = async (req, res, next) => {
 
 const deleteUser = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const { id } = req;
     const user = await User.findById(id);
 
     if (!user)
