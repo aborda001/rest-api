@@ -28,6 +28,9 @@ const express = require('express');
  *        description:
  *          type: string
  *          description: La descripción de la tarea, debe tener una longitud mínima de 5 caracteres y una longitud máxima de 100 caracteres
+ *        done:
+ *          type: boolean
+ *          description: Indica si la tarea está completada o no (true/false) por defecto es false
  *      required:
  *        - name
  *        - description
@@ -59,14 +62,6 @@ const express = require('express');
  *            example:
  *              messsage: 'Invalid credentials'
  *              token: null
- *    ForbiddenError:
- *      description: Error de permisos
- *      content:
- *        application/json:
- *          schema:
- *            example:
- *              messsage: 'Permission denied'
- *              token: null
  *    ConflictError:
  *      description: Error de conflicto
  *      content:
@@ -92,6 +87,14 @@ const express = require('express');
  *            example:
  *              error: 'Bad request'
  *              message: '"name" length must be at least 2 characters long'
+ *    NotFoundTaskError:
+ *      description: Tarea no encontrada
+ *      content:
+ *        application/json:
+ *          schema:
+ *            example:
+ *              error: 'Not found'
+ *              message: 'Task not found'
  *
  */
 

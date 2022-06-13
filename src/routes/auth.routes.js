@@ -27,7 +27,7 @@ const router = Router();
  *            $ref: '#/components/schemas/Users'
  *    responses:
  *      200:
- *        description: Signin success
+ *        description: Autenticación exitosa
  *        content:
  *          application/json:
  *            schema:
@@ -38,11 +38,10 @@ const router = Router();
  *
  *      401:
  *        $ref: '#/components/schemas/UnauthorizedError'
- *
  *      500:
  *        $ref: '#/components/schemas/ServerError'
  *
  */
-router.post('/', validatorHandler(createUserSchema, 'body'), signin);
+router.post('/', signin);
 
 module.exports = router;

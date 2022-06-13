@@ -34,7 +34,7 @@ const router = Router();
  *            $ref: '#/components/schemas/Users'
  *    responses:
  *      201:
- *        description: User created successfully
+ *        description: Usuario creado satisfactoriamente
  *        content:
  *          application/json:
  *            schema:
@@ -45,11 +45,11 @@ const router = Router();
  *                    username: username001
  *
  *      400:
- *        $ref: '#/components/schemas/ValidationError'
- *
+ *        $ref: '#/components/schemas/BadRequestError'
+ *      401:
+ *        $ref: '#/components/schemas/UnauthorizedError'
  *      409:
  *        $ref: '#/components/schemas/ConflictError'
- *
  *      500:
  *        $ref: '#/components/schemas/ServerError'
  *
@@ -82,7 +82,7 @@ router.post(
  *            $ref: '#/components/schemas/Users'
  *    responses:
  *      200:
- *        description: User updated successfully
+ *        description: Usuario actualizado satisfactoriamente
  *        content:
  *          application/json:
  *            schema:
@@ -96,9 +96,6 @@ router.post(
  *
  *      401:
  *        $ref: '#/components/schemas/UnauthorizedError'
- *
- *      403:
- *        $ref: '#/components/schemas/ForbiddenError'
  *
  *      404:
  *        $ref: '#/components/schemas/NotFoundError'
@@ -129,7 +126,7 @@ router.patch(
  *        description: Token de autenticación
  *    responses:
  *      200:
- *        description: User deleted successfully
+ *        description: Usuario eliminado satisfactoriamente
  *        content:
  *          application/json:
  *            schema:
@@ -143,9 +140,6 @@ router.patch(
  *
  *      401:
  *        $ref: '#/components/schemas/UnauthorizedError'
- *
- *      403:
- *        $ref: '#/components/schemas/ForbiddenError'
  *
  *      404:
  *        $ref: '#/components/schemas/NotFoundError'
